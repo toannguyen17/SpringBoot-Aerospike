@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  spring:
+    image: 'docker.io/library/demo:0.0.1-SNAPSHOT'
+    container_name: spring-boot-aerospike
+    hostname: ${HOSTNAME}
+    ports:
+      - 8080:8080
+
+  aerospike:
+    image: 'aerospike'
+    container_name: aerospike
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+    volumes:
+      - 'aerospike_data:/opt/aerospike/data'
+
+volumes:
+  aerospike_data:
